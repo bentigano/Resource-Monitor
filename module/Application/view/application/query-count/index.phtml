@@ -1,0 +1,41 @@
+<?php
+
+$title = 'Query Count';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('queries', array('action'=>'add'));?>">Add new Query Count</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>DB Connection</th>
+    <th>Query</th>
+    <th>Fail Count</th>
+    <th>Last Checked</th>
+    <th>Last Result</th>
+    <th>Last Error</th>
+    <th>Actions</th>
+</tr>
+<?php foreach ($this->queryCounts as $queryCount) : ?>
+<tr>
+    <td>
+        <a href="<?php echo $this->url('queries', array('action'=>'view', 'id' => $queryCount->id));?>">
+        <?php echo $this->escapeHtml($queryCount->name);?>
+        </a>
+    </td>
+    <td><?php echo $this->dbConnectionName($queryCount->which_db);?></td>
+    <td><?php echo $this->escapeHtml($queryCount->query);?></td>
+    <td><?php echo $this->escapeHtml($queryCount->fail_count);?></td>
+    <td><?php echo $this->date($queryCount->last_checked);?></td>
+    <td><?php echo $this->boolResult($queryCount->last_result);?></td>
+    <td><?php echo $this->escapeHtml($queryCount->last_error);?></td>
+    <td>
+        <a href="<?php echo $this->url('queries', array('action'=>'edit', 'id' => $queryCount->id));?>">Edit</a> | 
+        <a href="<?php echo $this->url('queries', array('action'=>'delete', 'id' => $queryCount->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

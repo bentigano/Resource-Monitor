@@ -1,0 +1,28 @@
+<?php
+
+$title = 'Delete DB Connection';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<div class="alert alert-error">
+  <strong>Danger!</strong> Deleting this resource will also remove any dependent queries and monitoring plans (which will also remove any alert subscriptions tied to those plans.)
+</div>
+
+<p>Are you sure that you want to delete
+    '<?php echo $this->escapeHtml($this->dbConnection->name); ?>' pointed at
+    '<?php echo $this->escapeHtml($this->dbConnection->dsn); ?>'?
+</p>
+<?php
+$url = $this->url('dbconnections', array(
+    'action' => 'delete',
+    'id'     => $this->id,
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $this->dbConnection->id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>

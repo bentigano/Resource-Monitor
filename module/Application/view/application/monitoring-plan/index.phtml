@@ -1,0 +1,66 @@
+<?php
+
+use Application\Model\FrequencyUnit;
+
+$title = 'Monitoring Plans';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('plans', array('action'=>'add'));?>">Add new Monitoring Plan</a>
+</p>
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Resource</th>
+    <th>Last Checked</th>
+    <th>Execution Days</th>
+    <th>Frequency</th>
+    <th>Execution Time</th>
+    <th>Actions</th>
+</tr>
+<?php foreach ($this->monitoringPlans as $monitoringPlan) : ?>
+<tr>
+    <td>
+        <a href="<?php echo $this->url('plans', array('action'=>'view', 'id' => $monitoringPlan->id));?>">
+        <?php echo $this->escapeHtml($monitoringPlan->name);?>
+        </a>
+    </td>
+    <td><?php echo $this->resourceName($monitoringPlan->resource_id);?></td>
+    <td><?php echo $this->date($monitoringPlan->last_checked);?></td>
+    <td>
+        <?php if ($monitoringPlan->run_mondays) echo 'M'; ?>
+        <?php if ($monitoringPlan->run_tuesdays) echo 'T'; ?>
+        <?php if ($monitoringPlan->run_wednesdays) echo 'W'; ?>
+        <?php if ($monitoringPlan->run_thursdays) echo 'R'; ?>
+        <?php if ($monitoringPlan->run_fridays) echo 'F'; ?>
+        <?php if ($monitoringPlan->run_saturdays) echo 'S'; ?>
+        <?php if ($monitoringPlan->run_sundays) echo 'U'; ?>
+    </td>
+    <td>
+        <?php
+            switch ($monitoringPlan->frequency_unit) {
+                case FrequencyUnit::MINUTE:
+                    $unit = 'minute(s)';
+                    break;
+                case FrequencyUnit::HOUR:
+                    $unit = 'hour(s)';
+                    break;
+                case FrequencyUnit::DAY:
+                    $unit = 'day(s)';
+                    break;
+            }
+            echo sprintf('Every %d %s', $monitoringPlan->frequency, $unit);
+        ?>
+    </td>
+    <td>
+        <?php echo $this->time($monitoringPlan->starting_at);?> - 
+        <?php echo $this->time($monitoringPlan->ending_at);?>
+    </td>
+    <td>
+        <a href="<?php echo $this->url('plans', array('action'=>'edit', 'id' => $monitoringPlan->id));?>">Edit</a> | 
+        <a href="<?php echo $this->url('plans', array('action'=>'delete', 'id' => $monitoringPlan->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

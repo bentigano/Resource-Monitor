@@ -1,0 +1,27 @@
+<?php
+
+$title = 'Delete Monitoring Plan';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<div class="alert alert-error">
+  <strong>Danger!</strong> Deleting this monitoring plan will also remove any alert subscriptions tied to this plan.
+</div>
+
+<p>Are you sure that you want to delete
+    '<?php echo $this->escapeHtml($this->monitoringPlan->name); ?>'?
+</p>
+<?php
+$url = $this->url('plans', array(
+    'action' => 'delete',
+    'id'     => $this->id,
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $this->monitoringPlan->id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>

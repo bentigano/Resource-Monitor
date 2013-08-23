@@ -1,0 +1,39 @@
+<?php
+
+$title = 'DB Connections';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('dbconnections', array('action'=>'add'));?>">Add new DB Connection</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>DSN</th>
+    <th>Username</th>
+    <th>Last Checked</th>
+    <th>Last Result</th>
+    <th>Last Error</th>
+    <th>Actions</th>
+</tr>
+<?php foreach ($this->dbConnections as $dbConnection) : ?>
+<tr>
+    <td>
+        <a href="<?php echo $this->url('dbconnections', array('action'=>'view', 'id' => $dbConnection->id));?>">
+        <?php echo $this->escapeHtml($dbConnection->name);?>
+        </a>
+    </td>
+    <td><?php echo $this->escapeHtml($dbConnection->dsn);?></td>
+    <td><?php echo $this->escapeHtml($dbConnection->username);?></td>
+    <td><?php echo $this->date($dbConnection->last_checked);?></td>
+    <td><?php echo $this->boolResult($dbConnection->last_result);?></td>
+    <td><?php echo $this->escapeHtml($dbConnection->last_error);?></td>
+    <td>
+        <a href="<?php echo $this->url('dbconnections', array('action'=>'edit', 'id' => $dbConnection->id));?>">Edit</a> | 
+        <a href="<?php echo $this->url('dbconnections', array('action'=>'delete', 'id' => $dbConnection->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

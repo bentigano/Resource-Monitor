@@ -1,0 +1,26 @@
+<?php
+
+$title = 'Alert Subscriptions';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('alerts', array('action'=>'add'));?>">Add new Alert Subscription</a>
+</p>
+<table class="table">
+<tr>
+    <th>Monitoring Plan</th>
+    <th>Email</th>
+    <th>Actions</th>
+</tr>
+<?php foreach ($this->alertSubscriptions as $alertSubscription) : ?>
+<tr>
+    <td><?php echo $this->planName($alertSubscription->monitoring_plan_id);?></td>
+    <td><?php echo $this->escapeHtml($alertSubscription->email);?></td>
+    <td>
+        <a href="<?php echo $this->url('alerts', array('action'=>'edit', 'id' => $alertSubscription->id));?>">Edit</a> | 
+        <a href="<?php echo $this->url('alerts', array('action'=>'delete', 'id' => $alertSubscription->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

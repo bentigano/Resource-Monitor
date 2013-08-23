@@ -1,0 +1,2 @@
+vendor/ZF2/*
+config/autoload/local.php

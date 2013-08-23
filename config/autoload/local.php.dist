@@ -1,0 +1,29 @@
+<?php
+/**
+ * Local Configuration Override
+ *
+ * This configuration override file is for overriding environment-specific and
+ * security-sensitive configuration information. Copy this file without the
+ * .dist extension at the end and populate values as needed.
+ *
+ */
+
+return array(
+    'db' => array(
+        'username' => 'root',
+        'password' => 'password',
+    ),
+    'alerts' => array(
+        'mail' => array(
+            'host'              => 'smtp.gmail.com',
+            'connection_class'  => 'login',
+            'connection_config' => array(
+                'ssl'       => 'tls',
+                'username' => 'username@gmail.com',
+                'password' => 'my-secret-password'
+            ),
+            'port' => 587,
+        ),
+        'send_from' => 'notifications@domain.com',
+    ),
+);

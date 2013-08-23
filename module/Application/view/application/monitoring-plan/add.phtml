@@ -1,0 +1,30 @@
+<?php
+
+$title = 'Add new Monitoring Plan';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('plans', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+//echo $this->formHidden($form->get('id'));
+//echo $this->formRow($form->get('name'));
+//echo $this->formRow($form->get('resource_id'));
+//echo $this->formRow($form->get('enabled'));
+//echo $this->formRow($form->get('run_mondays'));
+//echo $this->formRow($form->get('run_tuesdays'));
+//echo $this->formRow($form->get('run_wednesdays'));
+//echo $this->formRow($form->get('run_thursdays'));
+//echo $this->formRow($form->get('run_fridays'));
+//echo $this->formRow($form->get('run_saturdays'));
+//echo $this->formRow($form->get('run_sundays'));
+//echo $this->formRow($form->get('frequency'));
+//echo $this->formRow($form->get('frequency_unit'));
+//echo $this->formRow($form->get('starting_at'));
+//echo $this->formRow($form->get('ending_at'));
+//echo $this->formSubmit($form->get('submit'));
+echo $this->formCollection($form);
+echo $this->form()->closeTag();

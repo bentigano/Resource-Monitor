@@ -1,0 +1,37 @@
+<?php
+
+$title = 'SOAP Services';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('soapservices', array('action'=>'add'));?>">Add new SOAP Service</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>WSDL Location</th>
+    <th>Last Checked</th>
+    <th>Last Result</th>
+    <th>Last Error</th>
+    <th>Actions</th>
+</tr>
+<?php foreach ($this->soapServices as $soapService) : ?>
+<tr>
+    <td>
+        <a href="<?php echo $this->url('soapservices', array('action'=>'view', 'id' => $soapService->id));?>">
+        <?php echo $this->escapeHtml($soapService->name);?>
+        </a>
+    </td>
+    <td><?php echo $this->escapeHtml($soapService->wsdl_location);?></td>
+    <td><?php echo $this->date($soapService->last_checked);?></td>
+    <td><?php echo $this->boolResult($soapService->last_result);?></td>
+    <td><?php echo $this->escapeHtml($soapService->last_error);?></td>
+    <td>
+        <a href="<?php echo $this->url('soapservices', array('action'=>'edit', 'id' => $soapService->id));?>">Edit</a> | 
+        <a href="<?php echo $this->url('soapservices', array('action'=>'delete', 'id' => $soapService->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

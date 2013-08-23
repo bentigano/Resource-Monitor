@@ -1,0 +1,33 @@
+<?php
+
+$title = 'SOAP: ' . $this->escapeHtml($this->soapService->name);
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<div class="well">
+    <dl>
+      <dt><h4>WSDL Location</h4></dt>
+      <dd><?php echo $this->escapeHtml($this->soapService->wsdl_location); ?></dd>
+    </dl>
+</div>
+
+<h3>Status Check History</h3>
+<table class="table table-striped table-bordered">
+<tr>
+    <th>Date Checked</th>
+    <th>Result</th>
+    <th>Error Details</th>
+</tr>
+<?php foreach ($this->statusChecks as $statusCheck) : ?>
+<tr>
+    <td><?php echo $this->date($statusCheck->datetime_checked);?></td>
+    <td><?php echo $this->boolResult($statusCheck->success);?></td>
+    <td>
+        <?php if (!$statusCheck->success) { ?>
+        <pre><?php echo $this->escapeHtml($statusCheck->error_details);?></pre>
+        <?php } ?>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
