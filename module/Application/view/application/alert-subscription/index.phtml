@@ -4,6 +4,9 @@ $title = 'Alert Subscriptions';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php if ($this->alertSubscriptions->count() > 0) { ?>
+
 <p>
     <a href="<?php echo $this->url('alerts', array('action'=>'add'));?>">Add new Alert Subscription</a>
 </p>
@@ -24,3 +27,10 @@ $this->headTitle($title);
 </tr>
 <?php endforeach; ?>
 </table>
+
+<?php } else { ?>
+
+<div class="alert alert-block">
+  You haven't yet created any alert subscriptions. Click <a href="<?php echo $this->url('alerts', array('action'=>'add'));?>">here</a> to create one.</div>
+
+<?php } ?>

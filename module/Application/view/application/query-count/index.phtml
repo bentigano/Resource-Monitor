@@ -4,6 +4,9 @@ $title = 'Query Count';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php if ($this->queryCounts->count() > 0) { ?>
+
 <p>
     <a href="<?php echo $this->url('queries', array('action'=>'add'));?>">Add new Query Count</a>
 </p>
@@ -39,3 +42,10 @@ $this->headTitle($title);
 </tr>
 <?php endforeach; ?>
 </table>
+
+<?php } else { ?>
+
+<div class="alert alert-block">
+  You haven't yet created any queries to monitor. Click <a href="<?php echo $this->url('queries', array('action'=>'add'));?>">here</a> to create one.</div>
+
+<?php } ?>

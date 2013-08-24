@@ -4,6 +4,9 @@ $title = 'SOAP Services';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php if ($this->soapServices->count() > 0) { ?>
+
 <p>
     <a href="<?php echo $this->url('soapservices', array('action'=>'add'));?>">Add new SOAP Service</a>
 </p>
@@ -35,3 +38,10 @@ $this->headTitle($title);
 </tr>
 <?php endforeach; ?>
 </table>
+
+<?php } else { ?>
+
+<div class="alert alert-block">
+  You haven't yet created any SOAP services to monitor. Click <a href="<?php echo $this->url('soapservices', array('action'=>'add'));?>">here</a> to create one.</div>
+
+<?php } ?>

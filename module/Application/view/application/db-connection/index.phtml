@@ -4,6 +4,9 @@ $title = 'DB Connections';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php if ($this->dbConnections->count() > 0) { ?>
+
 <p>
     <a href="<?php echo $this->url('dbconnections', array('action'=>'add'));?>">Add new DB Connection</a>
 </p>
@@ -37,3 +40,10 @@ $this->headTitle($title);
 </tr>
 <?php endforeach; ?>
 </table>
+
+<?php } else { ?>
+
+<div class="alert alert-block">
+  You haven't yet created any DB connections to monitor. Click <a href="<?php echo $this->url('dbconnections', array('action'=>'add'));?>">here</a> to create one.</div>
+
+<?php } ?>

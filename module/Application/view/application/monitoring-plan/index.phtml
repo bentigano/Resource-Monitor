@@ -6,6 +6,9 @@ $title = 'Monitoring Plans';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php if ($this->monitoringPlans->count() > 0) { ?>
+
 <p>
     <a href="<?php echo $this->url('plans', array('action'=>'add'));?>">Add new Monitoring Plan</a>
 </p>
@@ -64,3 +67,10 @@ $this->headTitle($title);
 </tr>
 <?php endforeach; ?>
 </table>
+
+<?php } else { ?>
+
+<div class="alert alert-block">
+  You haven't yet created any monitoring plans. Click <a href="<?php echo $this->url('plans', array('action'=>'add'));?>">here</a> to create one.</div>
+
+<?php } ?>
