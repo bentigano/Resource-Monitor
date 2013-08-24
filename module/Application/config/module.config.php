@@ -156,4 +156,147 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+    'service_manager' => array(
+        'factories' => array(
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+        ),
+    ),
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Home',
+                'route' => 'home',
+            ),
+            array(
+                'label' => 'Services',
+                'route' => 'soapservices',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'soapservices',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'View',
+                        'route' => 'soapservices',
+                        'action' => 'view',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'soapservices',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'soapservices',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
+                'label' => 'DB Connections',
+                'route' => 'dbconnections',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'dbconnections',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'View',
+                        'route' => 'dbconnections',
+                        'action' => 'view',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'dbconnections',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'dbconnections',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
+                'label' => 'Queries',
+                'route' => 'queries',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'queries',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'View',
+                        'route' => 'queries',
+                        'action' => 'view',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'queries',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'queries',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
+                'label' => 'Monitoring Plans',
+                'route' => 'plans',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'plans',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'View',
+                        'route' => 'plans',
+                        'action' => 'view',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'plans',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'plans',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
+                'label' => 'Alert Subscriptions',
+                'route' => 'alerts',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'alerts',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'View',
+                        'route' => 'alerts',
+                        'action' => 'view',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'alerts',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'alerts',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+        ),
+    ),
 );

@@ -30,18 +30,24 @@
                     </a>
                     <a class="brand" href="<?php echo $this->url('home') ?>">Resource Monitor</a>
                     <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li><a href="<?php echo $this->url('soapservices') ?>">Services</a></li>
-                            <li><a href="<?php echo $this->url('dbconnections') ?>">DB Connections</a></li>
-                            <li><a href="<?php echo $this->url('queries') ?>">Queries</a></li>
-                            <li><a href="<?php echo $this->url('plans') ?>">Monitoring Plans</a></li>
-                            <li><a href="<?php echo $this->url('alerts') ?>">Alert Subscriptions</a></li>
-                        </ul>
+                        <?php
+                    echo $this->navigation('navigation')
+                        ->menu()
+                        ->setMinDepth(0)
+                        ->setMaxDepth(0)
+                        ->setUlClass('nav')
+                        ->render();
+                    ?>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
         </div>
         <div class="container">
+            <?php /*echo $this->navigation('navigation')
+            ->breadcrumbs()
+            ->setMinDepth(0)
+            ->setPartial(array('partial/breadcrumb.phtml', 'Home')); */
+            ?>
             <?php echo $this->content; ?>
             <hr>
             <footer>
