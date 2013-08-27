@@ -44,9 +44,12 @@ class MonitoringPlanTable
             'run_sundays'  => $monitoringPlan->run_sundays,
             'frequency'  => $monitoringPlan->frequency,
             'frequency_unit'  => $monitoringPlan->frequency_unit,
-            'starting_at'  => $monitoringPlan->starting_at,
-            'ending_at'  => $monitoringPlan->ending_at,
         );
+        
+        $starting_at = new \DateTime($monitoringPlan->starting_at);
+        $data['starting_at'] = $starting_at->format('H:i');
+        $ending_at = new \DateTime($monitoringPlan->ending_at);
+        $data['ending_at'] = $ending_at->format('H:i');
 
         $id = (int)$monitoringPlan->id;
         if ($id == 0) {

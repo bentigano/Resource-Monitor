@@ -61,6 +61,10 @@ class SoapServiceTable
             'last_result'  => $soapService->last_result,
             'last_error'   => $soapService->last_error,
         );
+        
+        if (!$data['last_result']) {
+            $data['last_result'] = 0;
+        }
 
         $id = (int)$soapService->id;
         if ($this->getSoapService($id)) {
