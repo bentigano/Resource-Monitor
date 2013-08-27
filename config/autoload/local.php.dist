@@ -15,14 +15,10 @@ return array(
     ),
     'alerts' => array(
         'mail' => array(
-            'host'              => 'smtp.gmail.com',
-            'connection_class'  => 'login',
             'connection_config' => array(
-                'ssl'       => 'tls',
                 'username' => 'username@gmail.com',
                 'password' => 'my-secret-password'
             ),
-            'port' => 587,
         ),
         'send_from' => 'notifications@domain.com',
     ),
