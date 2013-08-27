@@ -27,7 +27,8 @@ class NotificationService
         
         // Setup SMTP transport using LOGIN authentication
         $this->mailTransport = new SmtpTransport();
-        $options   = new SmtpOptions($this->sm->get('Config')['alerts']['mail']);
+        $configuration = $this->sm->get('Config');
+        $options   = new SmtpOptions($configuration['alerts']['mail']);
         $this->mailTransport->setOptions($options);
     }
     
@@ -36,7 +37,8 @@ class NotificationService
         $subjectFormat = 'Test Failed: %s';
         
         $message = new Message();
-        $message->addFrom($this->sm->get('Config')['alerts']['send_from'])
+        $configuration = $this->sm->get('Config');
+        $message->addFrom($configuration['alerts']['send_from'])
             ->setSubject(sprintf($subjectFormat, $monitoringPlan->name));
         
         $alertSubscriptions = $this->getAlertSubscriptionTable()->getAlertSubscriptionsByPlan($monitoringPlan->id);
