@@ -63,6 +63,10 @@ class DbConnectionTable
             'last_result'  => $dbConnection->last_result,
             'last_error'   => $dbConnection->last_error,
         );
+        
+        if (!$data['last_result']) {
+            $data['last_result'] = 0;
+        }
 
         $id = (int)$dbConnection->id;
         if ($this->getDbConnection($id)) {

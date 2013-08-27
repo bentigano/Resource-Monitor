@@ -42,6 +42,10 @@ class StatusCheckTable
             'success'  => $statusCheck->success,
             'error_details'  => $statusCheck->error_details,
         );
+        
+        if (!$data['success']) {
+            $data['success'] = 0;
+        }
 
         $this->tableGateway->insert($data);
     }

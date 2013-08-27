@@ -63,6 +63,10 @@ class QueryCountTable
             'last_result'  => $queryCount->last_result,
             'last_error'   => $queryCount->last_error,
         );
+        
+        if (!$data['last_result']) {
+            $data['last_result'] = 0;
+        }
 
         $id = (int)$queryCount->id;
         if ($this->getQueryCount($id)) {
