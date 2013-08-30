@@ -161,7 +161,7 @@ class MonitoringService
                 $checkAgainAt->add(new \DateInterval('P' . $monitoringPlan->frequency . 'D'));
                 break;
         }
-        return $checkAgainAt < $currentTime;
+        return $checkAgainAt <= $currentTime;
     }
     
     public function getMonitoringPlanTable()
